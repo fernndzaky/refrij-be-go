@@ -11,6 +11,7 @@ import (
 func init() {
 	initializers.LoadEnvVariables()
 	initializers.ConnectToDB()
+	initializers.SyncDatabase()
 }
 
 func CORSMiddleware() gin.HandlerFunc {

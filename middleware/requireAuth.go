@@ -1,11 +1,11 @@
 package middleware
 
 import (
-	"billboss/initializers"
-	"billboss/models"
 	"fmt"
 	"net/http"
 	"os"
+	"refrij/initializers"
+	"refrij/models"
 	"time"
 
 	"github.com/gin-gonic/gin"
