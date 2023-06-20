@@ -43,6 +43,12 @@ func main() {
 	r.PUT("/api/update/:user_id", middleware.RequireAuth, controllers.UpdateProfile)
 	r.GET("/api/get-user-detail/:user_id", middleware.RequireAuth, controllers.GetUserDetail)
 
+	r.GET("/api/getRefrigeratorDetail/:refrigerator_id", middleware.RequireAuth, controllers.GetRefrigeratorDetail)
+	r.GET("/api/getRefiregators/:user_id", middleware.RequireAuth, controllers.GetRefiregators)
+	r.POST("/api/createRefrigerator", middleware.RequireAuth, controllers.CreateRefrigerator)
+	r.GET("/api/updateRefrigerator/:refrigerator_id", middleware.RequireAuth, controllers.UpdateRefrigerator)
+	r.DELETE("/api/deleteRefrigerator/:refrigerator_id", middleware.RequireAuth, controllers.DeleteRefrigerator)
+
 	r.GET("/ping", func(c *gin.Context) {
 		c.JSON(200, gin.H{
 			"message": "pong",
