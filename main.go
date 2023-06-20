@@ -49,6 +49,14 @@ func main() {
 	r.GET("/api/updateRefrigerator/:refrigerator_id", middleware.RequireAuth, controllers.UpdateRefrigerator)
 	r.DELETE("/api/deleteRefrigerator/:refrigerator_id", middleware.RequireAuth, controllers.DeleteRefrigerator)
 
+	r.GET("/api/getIngredientDetail/:ingredient_id", middleware.RequireAuth, controllers.GetIngredientDetail)
+	r.GET("/api/getUserIngredients/:user_id", middleware.RequireAuth, controllers.GetUserIngredients)
+	r.GET("/api/getAllUserIngredients/:user_id", middleware.RequireAuth, controllers.GetAllUserIngredients)
+	r.GET("/api/getIngredients/:refrigerator_id", middleware.RequireAuth, controllers.GetIngredients)
+	r.POST("/api/createIngredient", middleware.RequireAuth, controllers.CreateIngredient)
+	r.PUT("/api/updateIngredient/:ingredient_id", middleware.RequireAuth, controllers.UpdateIngredient)
+	r.DELETE("/api/deleteIngredient/:ingredient_id", middleware.RequireAuth, controllers.DeleteIngredient)
+
 	r.GET("/ping", func(c *gin.Context) {
 		c.JSON(200, gin.H{
 			"message": "pong",
