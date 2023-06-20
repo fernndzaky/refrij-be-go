@@ -283,7 +283,7 @@ func UpdateProfile(c *gin.Context) {
 
 func ChangePassword(c *gin.Context) {
 	//get id off url
-	id := c.Param("id")
+	id := c.Param("user_id")
 
 	//get the data off request body
 	var body struct {
