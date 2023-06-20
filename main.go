@@ -41,7 +41,7 @@ func main() {
 	r.POST("/api/login", controllers.Login)
 	r.PUT("/api/change-password/:user_id", middleware.RequireAuth, controllers.ChangePassword)
 	r.PUT("/api/update/:user_id", middleware.RequireAuth, controllers.UpdateProfile)
-	r.PUT("/api/user/:user_id", middleware.RequireAuth, controllers.GetUserDetail)
+	r.GET("/api/user/:user_id", middleware.RequireAuth, controllers.GetUserDetail)
 
 	r.GET("/ping", func(c *gin.Context) {
 		c.JSON(200, gin.H{
