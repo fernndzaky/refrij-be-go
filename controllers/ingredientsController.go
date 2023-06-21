@@ -172,6 +172,7 @@ func UpdateIngredient(c *gin.Context) {
 		IngredientName string
 		Quantity       string
 		ValidUntil     time.Time
+		CategoryName   string
 	}
 
 	c.Bind(&body)
@@ -184,6 +185,7 @@ func UpdateIngredient(c *gin.Context) {
 		IngredientName: body.IngredientName,
 		Quantity:       body.Quantity,
 		ValidUntil:     body.ValidUntil,
+		CategoryName:   body.CategoryName,
 	})
 
 	//Respond with it
