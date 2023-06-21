@@ -52,6 +52,7 @@ func main() {
 	r.GET("/api/getIngredientDetail/:ingredient_id", middleware.RequireAuth, controllers.GetIngredientDetail)
 	r.GET("/api/getUserIngredients/:user_id", middleware.RequireAuth, controllers.GetUserIngredients)
 	r.GET("/api/getAllUserIngredients/:user_id", middleware.RequireAuth, controllers.GetAllUserIngredients)
+	r.GET("/api/getAllUserIngredientsByFilter/:user_id", middleware.RequireAuth, controllers.GetAllUserIngredientsByFilter)
 	r.GET("/api/getIngredients/:refrigerator_id", middleware.RequireAuth, controllers.GetIngredients)
 	r.POST("/api/createIngredient", middleware.RequireAuth, controllers.CreateIngredient)
 	r.PUT("/api/updateIngredient/:ingredient_id", middleware.RequireAuth, controllers.UpdateIngredient)

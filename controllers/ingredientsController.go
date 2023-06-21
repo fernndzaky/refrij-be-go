@@ -218,3 +218,40 @@ func DeleteIngredient(c *gin.Context) {
 		"errorMessage": nil,
 	})
 }
+
+func GetAllUserIngredientsByFilter(c *gin.Context) {
+	//get id off url
+	user_id := c.Param("user_id")
+	var body struct {
+		CategoryName string
+	}
+	c.Bind(&body)
+	var ingredients []models.Ingredient
+
+	result := initializers.DB.Unscoped().Order("created_at desc").Find(&ingredients, "user_id = ? AND category_name = ?", user_id, body.CategoryName)
+
+	if result.Error != nil {
+
+		c.JSON(http.StatusBadRequest, gin.H{
+			"success":      false,
+			"errorMessage": result.Error.Error(),
+		})
+		return
+	}
+	if result.RowsAffected == 0 {
+
+		c.JSON(http.StatusBadRequest, gin.H{
+			"success":      false,
+			"errorMessage": "No records found",
+		})
+		return
+	}
+
+	//Respond with them
+	c.JSON(200, gin.H{
+		"content":      ingredients,
+		"success":      true,
+		"errorMessage": nil,
+	})
+
+}
