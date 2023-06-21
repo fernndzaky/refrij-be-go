@@ -137,12 +137,13 @@ func CreateIngredient(c *gin.Context) {
 		IngredientName string
 		Quantity       string
 		ValidUntil     time.Time `form:"end_date" binding:"required" time_format:"2006-01-02"`
+		CategoryName   string
 	}
 	c.Bind(&body)
 
 	//Create an ingredient
 	ingredient := models.Ingredient{
-		RefrigeratorID: body.RefrigeratorID, UserID: body.UserID, IngredientName: body.IngredientName, Quantity: body.Quantity, ValidUntil: body.ValidUntil}
+		RefrigeratorID: body.RefrigeratorID, UserID: body.UserID, IngredientName: body.IngredientName, Quantity: body.Quantity, ValidUntil: body.ValidUntil, CategoryName: body.CategoryName}
 
 	result := initializers.DB.Create(&ingredient) // pass pointer of data to Create
 
